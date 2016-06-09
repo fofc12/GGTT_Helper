@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE Tasks SYSTEM "Tasks-6.0.dtd">
+<!-- eric6 tasks file for project ggtt_helper -->
+<!-- Saved: 2016-05-16, 15:59:28 -->
+<Tasks version="6.0">
+  <ProjectScanFilter></ProjectScanFilter>
+  <Task priority="1" completed="False" type="1" uid="{80474b6b-066f-4849-99c1-2fdf4bde092e}">
+    <Summary>TODO: not implemented yet</Summary>
+    <Description></Description>
+    <Created>2016-02-24, 12:37:15</Created>
+    <Resource>
+      <Filename>maindiag.py</Filename>
+      <Linenumber>61</Linenumber>
+    </Resource>
+  </Task>
+  <Task priority="1" completed="False" type="1" uid="{8d6084b8-b3d8-4329-aadc-7edba587a1b1}">
+    <Summary>TODO: not implemented yet</Summary>
+    <Description></Description>
+    <Created>2016-02-24, 12:38:47</Created>
+    <Resource>
+      <Filename>mainui.py</Filename>
+      <Linenumber>32</Linenumber>
+    </Resource>
+  </Task>
+  <Task priority="1" completed="False" type="1" uid="{6de46722-6dcf-46ca-bc7d-883f0d4d34f8}">
+    <Summary>TODO: not implemented yet</Summary>
+    <Description></Description>
+    <Created>2016-05-16, 15:59:25</Created>
+    <Resource>
+      <Filename>main.py</Filename>
+      <Linenumber>48</Linenumber>
+    </Resource>
+  </Task>
+  <Task priority="1" completed="False" type="1" uid="{02c6cb95-7440-4fdd-8c2c-b07006379e29}">
+    <Summary>TODO: not implemented yet</Summary>
+    <Description></Description>
+    <Created>2016-05-16, 15:59:25</Created>
+    <Resource>
+      <Filename>main.py</Filename>
+      <Linenumber>79</Linenumber>
+    </Resource>
+  </Task>
+  <Task priority="1" completed="False" type="1" uid="{fcc45d7a-a3fd-4588-a6b5-758c7b80a537}">
+    <Summary>TODO: not implemented yet</Summary>
+    <Description></Description>
+    <Created>2016-05-16, 15:59:25</Created>
+    <Resource>
+      <Filename>main.py</Filename>
+      <Linenumber>127</Linenumber>
+    </Resource>
+  </Task>
+  <Task priority="1" completed="False" type="1" uid="{a9be25cf-411d-40cd-8193-d6073c1ca27c}">
+    <Summary>TODO: not implemented yet</Summary>
+    <Description></Description>
+    <Created>2016-05-16, 15:59:25</Created>
+    <Resource>
+      <Filename>main.py</Filename>
+      <Linenumber>146</Linenumber>
+    </Resource>
+  </Task>
+</Tasks>
