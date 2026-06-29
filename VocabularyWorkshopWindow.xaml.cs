@@ -32,7 +32,7 @@ public partial class VocabularyWorkshopWindow : Window
             _entries.Clear();
             foreach (var entry in _store.Lookup(QueryBox.Text))
                 _entries.Add(entry);
-            Log($"Loaded {_entries.Count} entries from {_settings.ResolvedZeroXiRepoPath}");
+            Log($"Loaded {_entries.Count} entries");
         }
         catch (Exception ex)
         {

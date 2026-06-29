@@ -43,6 +43,9 @@ public partial class App : System.Windows.Application
         bool ok = _hotkey.Register(_settings.Hotkey);
 
         SetupTray(ok);
+        if (e.Args.Any(arg => string.Equals(arg, "--workshop", StringComparison.OrdinalIgnoreCase)))
+            OpenVocabularyWorkshop();
+
         AppPaths.Log("[App] started");
     }
 
