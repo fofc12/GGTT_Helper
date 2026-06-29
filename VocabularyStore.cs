@@ -252,9 +252,7 @@ internal sealed class VocabularyStore
 
     private static string RunPowerShell(string script, string arguments)
     {
-        var exe = File.Exists(@"X:\Powershell7\pwsh.exe")
-            ? @"X:\Powershell7\pwsh.exe"
-            : "powershell.exe";
+        var exe = "pwsh.exe";
         var psi = new ProcessStartInfo
         {
             FileName = exe,
@@ -264,12 +262,25 @@ internal sealed class VocabularyStore
             RedirectStandardError = true,
             CreateNoWindow = true,
         };
-        using var process = Process.Start(psi) ?? throw new InvalidOperationException("无法启动 PowerShell");
+        using var process = StartPowerShell(psi);
         var output = process.StandardOutput.ReadToEnd();
         var error = process.StandardError.ReadToEnd();
         process.WaitForExit();
         if (process.ExitCode != 0)
             throw new InvalidOperationException(output + Environment.NewLine + error);
         return output + error;
+    }
+
+    private static Process StartPowerShell(ProcessStartInfo psi)
+    {
+        try
+        {
+            return Process.Start(psi) ?? throw new InvalidOperationException("无法启动 PowerShell");
+        }
+        catch (System.ComponentModel.Win32Exception) when (psi.FileName == "pwsh.exe")
+        {
+            psi.FileName = "powershell.exe";
+            return Process.Start(psi) ?? throw new InvalidOperationException("无法启动 PowerShell");
+        }
     }
 }

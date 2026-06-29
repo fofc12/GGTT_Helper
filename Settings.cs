@@ -58,9 +58,20 @@ internal sealed class Settings
                 p = System.IO.Path.Combine(AppPaths.BaseDir, p);
             if (System.IO.File.Exists(p))
                 return p;
-            var fallback = System.IO.Path.Combine(AppPaths.BaseDir, "zero_wubi86_base.dict.yaml");
-            AppPaths.Log($"[Dict] primary not found ({p}), using fallback: {fallback}");
-            return fallback;
+
+            foreach (var name in new[] { "zero_wubi86_base.dict.yaml", "bm.txt" })
+            {
+                var fallback = System.IO.Path.Combine(AppPaths.BaseDir, name);
+                if (System.IO.File.Exists(fallback))
+                {
+                    AppPaths.Log($"[Dict] primary not found ({p}), using fallback: {fallback}");
+                    return fallback;
+                }
+            }
+
+            var missingFallback = System.IO.Path.Combine(AppPaths.BaseDir, "bm.txt");
+            AppPaths.Log($"[Dict] primary not found ({p}), no bundled dictionary found.");
+            return missingFallback;
         }
     }
 

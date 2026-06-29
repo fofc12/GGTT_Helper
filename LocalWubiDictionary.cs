@@ -49,33 +49,7 @@ internal sealed class LocalWubiDictionary
                 if (line.Length == 0) continue;
                 if (line[0] == '#') continue;
 
-                int tab = line.IndexOf('\t');
-                if (tab <= 0) continue; // header / metadata lines have no tab
-
-                var text = line.Substring(0, tab);
-                var rest = line.Substring(tab + 1);
-
-                int tab2 = rest.IndexOf('\t');
-                string code = tab2 < 0 ? rest : rest.Substring(0, tab2);
-                long weight = 1;
-                if (tab2 >= 0)
-                {
-                    var weightPart = rest.Substring(tab2 + 1);
-                    int tab3 = weightPart.IndexOf('\t');
-                    if (tab3 >= 0) weightPart = weightPart.Substring(0, tab3);
-                    long.TryParse(weightPart.Trim(), out weight);
-                }
-
-                code = code.Trim();
-                if (code.Length == 0 || !IsCode(code)) continue;
-
-                if (!dict._map.TryGetValue(text, out var list))
-                {
-                    list = new List<(string, long)>();
-                    dict._map[text] = list;
-                }
-                list.Add((code, weight));
-                count++;
+                count += dict.AddEntries(line);
             }
 
             dict.EntryCount = count;
@@ -96,6 +70,63 @@ internal sealed class LocalWubiDictionary
             if (!((c >= 'a' && c <= 'z') || c == ';'))
                 return false;
         return true;
+    }
+
+    private int AddEntries(string line)
+    {
+        if (line.IndexOf('\t') >= 0)
+            return AddRimeEntry(line);
+        return AddLegacyBmEntries(line);
+    }
+
+    private int AddRimeEntry(string line)
+    {
+        int tab = line.IndexOf('\t');
+        if (tab <= 0) return 0;
+
+        var text = line.Substring(0, tab);
+        var rest = line.Substring(tab + 1);
+
+        int tab2 = rest.IndexOf('\t');
+        string code = tab2 < 0 ? rest : rest.Substring(0, tab2);
+        long weight = 1;
+        if (tab2 >= 0)
+        {
+            var weightPart = rest.Substring(tab2 + 1);
+            int tab3 = weightPart.IndexOf('\t');
+            if (tab3 >= 0) weightPart = weightPart.Substring(0, tab3);
+            long.TryParse(weightPart.Trim(), out weight);
+        }
+
+        return AddEntry(text, code, weight);
+    }
+
+    private int AddLegacyBmEntries(string line)
+    {
+        var parts = line.Split(' ', StringSplitOptions.RemoveEmptyEntries);
+        if (parts.Length < 2 || !IsCode(parts[0]))
+            return 0;
+
+        var added = 0;
+        for (var index = 1; index < parts.Length; index++)
+            added += AddEntry(parts[index], parts[0], parts.Length - index);
+        return added;
+    }
+
+    private int AddEntry(string text, string code, long weight)
+    {
+        text = text.Trim();
+        code = code.Trim();
+        if (text.Length == 0 || code.Length == 0 || !IsCode(code))
+            return 0;
+
+        if (!_map.TryGetValue(text, out var list))
+        {
+            list = new List<(string, long)>();
+            _map[text] = list;
+        }
+        list.Add((code, weight));
+        return 1;
     }
 
     public WubiLookupResult Lookup(string ch)

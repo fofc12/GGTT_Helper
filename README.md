@@ -31,3 +31,12 @@ dotnet publish .\ZeroXiWubiWorkshop.csproj -c Release `
 `GGTT_Helper` 是 Windows 工具插件，可以独立开发；`zeroxi-wubi` 是输入法/Rime/Next 主仓库，可以通过子模块包含本工具。
 
 词库工坊默认会向上寻找 `zeroxi-wubi\integrations\rime\source`。如果独立运行，可以在设置里手动选择主仓库路径。
+
+<details>
+<summary>作者与支持</summary>
+
+作者：free2ing（零西） · haoyunmail@qq.com
+
+<img src="assets/support-wechat.png" alt="support" width="120">
+
+</details>

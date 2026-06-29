@@ -9,6 +9,7 @@ $RECYCLE.BIN/
 bin/
 obj/
 publish/
+release/
 Cache/
 *.pdb
 *.exe

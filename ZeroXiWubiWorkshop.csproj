@@ -11,7 +11,7 @@
     <UseWindowsForms>true</UseWindowsForms>
     <ApplicationHighDpiMode>PerMonitorV2</ApplicationHighDpiMode>
     <ApplicationManifest>app.manifest</ApplicationManifest>
-    <Version>0.12.0</Version>
+    <Version>0.12.1</Version>
     <Product>零西五笔工坊</Product>
     <AssemblyTitle>ZeroXiWubiWorkshop</AssemblyTitle>
     <SatelliteResourceLanguages>en</SatelliteResourceLanguages>
@@ -23,6 +23,9 @@
 
   <ItemGroup>
     <None Update="settings.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="bm.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
