@@ -1,0 +1,32 @@
+{
+  "dictPath": "%APPDATA%\\Rime\\zero_wubi86_base.dict.yaml",
+  "zeroXiRepoPath": "",
+  "hotkey": {
+    "alt": true,
+    "ctrl": false,
+    "shift": false,
+    "win": false,
+    "key": "Z"
+  },
+  "useClipboardFallback": false,
+  "popup": {
+    "compactWidthDip": 330,
+    "compactHeightDip": 168,
+    "expandedWidthDip": 960,
+    "expandedHeightDip": 660,
+    "offsetBelowPx": 6
+  },
+  "web": {
+    "enabled": true,
+    "zoomFactor": 1.0,
+    "hideChrome": true,
+    "proxy": "",
+    "primaryTemplate": "https://hantang.github.io/search-wubi/?char={char}",
+    "fallbacks": [
+      { "name": "学来五笔", "template": "https://wubi.xuelai.com/?key={char}" },
+      { "name": "汉典", "template": "https://www.zdic.net/hans/{char}" },
+      { "name": "百度汉语", "template": "https://hanyu.baidu.com/s?wd={char}" }
+    ]
+  },
+  "recentCacheSize": 200
+}
